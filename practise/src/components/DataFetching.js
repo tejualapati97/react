@@ -18,6 +18,14 @@ let filterData= users.filter((user)=>{
   return user.email.toUpperCase().includes(filterText.toUpperCase())
 })
 
+// const handleDelete=(userss)=>{
+
+// const latestData=users.filter((use)=>{
+//   return use.username !== userss.username
+// })
+// setUsers(latestData)
+// }
+
   return (
     <>
     <div>
@@ -38,6 +46,7 @@ let filterData= users.filter((user)=>{
             ? filterData?.map((user) => {
                 const { id, name, email, username, address, company } = user;
                 return (
+                  <>
                   <tr key={id}>
                     <td>{id}</td>
                     <td>{name}</td>
@@ -46,6 +55,8 @@ let filterData= users.filter((user)=>{
                     <td>{company.name} </td>
                     <td>{address.city}</td>
                   </tr>
+          {/* <button onClick={()=>handleDelete(user)}>Delete</button> */}
+          </>
                 );
               })
             : "no data is available"}

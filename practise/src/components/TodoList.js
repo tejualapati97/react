@@ -12,10 +12,17 @@ const TodoList = () => {
     setList([...list, todo]);
     setTodo("");
   };
+  ////delete functionality////
 
+  const handleRemove = (id) => {
+    const latestData = list.filter((i) => {
+      return i !== id;
+    });
+    setList(latestData);
+  };
   return (
     <>
-    <h1>TodoList application</h1>
+      <h1>TodoList application</h1>
       <div>
         <input type="text" name="todo" value={todo} onChange={handleChange} />
         &nbsp;
@@ -23,12 +30,13 @@ const TodoList = () => {
       </div>
 
       <div>
-        <ul style={{listStyleType:"none"}}>
+        <ul style={{ listStyleType: "none" }}>
           {list.length > 0
             ? list.map((item, index) => {
                 return (
-                  <div key={index}>
+                  <div key={item}>
                     <li>{item}</li>
+                    <button onClick={() => handleRemove(item)}>Delete</button>
                   </div>
                 );
               })
